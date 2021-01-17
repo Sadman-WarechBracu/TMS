@@ -1,0 +1,47 @@
+﻿@model RMMS.Model.PostManage.PostModel
+@{
+    ViewBag.Title = "CreatePost";
+    Layout = "~/Views/Shared/_AfterLayout.cshtml";
+}
+
+<br />
+<br />
+@using (Html.BeginForm("CreatePost"))
+{
+    if (!string.IsNullOrEmpty(ViewBag.Error))
+    {
+        <div class="alert alert-dismissible alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Oh snap!</strong><br /> @ViewBag.Error
+        </div>
+    }
+    if (!string.IsNullOrEmpty(ViewBag.Success))
+    {
+        <div class="alert alert-dismissible alert-success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+             @ViewBag.Success
+        </div>
+    }
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 well">
+            <fieldset>
+                <div class="form-group">
+                    <label for="textArea" class="col-lg-2 control-label">New Post</label>
+                    <div class="col-lg-10">
+                        @Html.TextAreaFor(m => m.description, 15, 10, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.description)<br />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <button type="submit" class="btn btn-primary">Post</button>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+}
+

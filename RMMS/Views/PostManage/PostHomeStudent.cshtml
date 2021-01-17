@@ -1,0 +1,25 @@
+﻿@model List<RMMS.Model.PostManage.PostHomeModel>
+@{
+    ViewBag.Title = "PostHomeStudent";
+    Layout = "~/Views/Shared/_AfterLayout.cshtml";
+}
+
+<table class="table table-striped table-hover ">
+    <thead>
+        <tr>
+            <th>User Name</th>
+            <th>PostDetails</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var v in Model)
+        {
+        <tr>
+            <td>@v.UserName</td>
+            <td>@v.Description</td>
+        </tr>
+        }
+        
+    </tbody>
+</table>
+

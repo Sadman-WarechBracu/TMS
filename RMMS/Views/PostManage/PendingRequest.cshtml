@@ -1,0 +1,30 @@
+﻿@model List<RMMS.Model.PostManage.PendingRequestModel>
+@{
+                /**/
+
+                ViewBag.Title = "PendingRequest";
+                Layout = "~/Views/Shared/_AfterLayout.cshtml";
+}
+
+<h2>Pending Request</h2>
+
+
+@foreach (var v in Model)
+{
+<div class="panel panel-default">
+    <div class="panel-heading">@v.description</div>
+    <div class="panel-body">
+        @foreach (var v1 in v.TeacherList)
+        {
+            <h3>Name: @v1.Name</h3>
+            <h4>Location: @v1.Location</h4>
+            <h3>Contact No: @v1.ContactNo</h3>
+            <h4>Email: @v1.Email</h4>
+            <hr style="border: 1px solid #000000"/>
+        }
+    </div>
+</div>
+}
+
+
+

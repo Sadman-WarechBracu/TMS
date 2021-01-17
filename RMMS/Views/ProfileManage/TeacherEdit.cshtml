@@ -1,0 +1,146 @@
+﻿@model RMMS.Model.ProfileManage.TeacherEditModel
+@{
+    ViewBag.Title = "TeacherEdit";
+    Layout = "~/Views/Shared/_AfterLayout.cshtml";
+}
+<br />
+<br />
+@using (Html.BeginForm("TeacherEdit"))
+{
+    if (!string.IsNullOrEmpty(ViewBag.Error))
+    {
+    <div class="alert alert-dismissible alert-danger">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Oh snap!</strong><br /> @ViewBag.Error
+    </div>
+    }
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 well">
+            <fieldset>
+                <legend>Edit</legend>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-2 control-label">User Name</label>
+                    <div class="col-lg-10">
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @value = "'" + Model.UserName + "'" })
+                        @Html.ValidationMessageFor(m => m.UserName)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-2 control-label">User FullName</label>
+                    <div class="col-lg-10">
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @value = "'" + Model.Name + "'" })
+                        @Html.ValidationMessageFor(m => m.Name)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                    <div class="col-lg-10">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @value = "'" + Model.Email + "'" })
+                        @Html.ValidationMessageFor(m => m.Email)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-2 control-label">Contact No</label>
+                    <div class="col-lg-10">
+                        @Html.TextBoxFor(m => m.ContactNo, new { @class = "form-control", @value = "'" + Model.ContactNo + "'" })
+                        @Html.ValidationMessageFor(m => m.ContactNo)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-2 control-label">Location</label>
+                    <div class="col-lg-10">
+                        @Html.TextBoxFor(m => m.Location, new { @class = "form-control", @value = "'" + Model.Location + "'" })
+                        @Html.ValidationMessageFor(m => m.Location)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="textArea" class="col-lg-2 control-label">Experties(Subjects)</label>
+                    <div class="col-lg-10">
+                        <textarea class="form-control" rows="3" id="textArea">@Model.Experties</textarea>
+                        <span class="help-block">Use coma for the seperation</span>
+                        @Html.ValidationMessageFor(m => m.Experties)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="textArea" class="col-lg-2 control-label">Description</label>
+                    <div class="col-lg-10">
+                        @Html.TextAreaFor(m => m.Description, new { @class = "form-control", value = "'" + Model.Description + "'" })
+                        <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+                        @Html.ValidationMessageFor(m => m.Description)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-2 control-label">Change Result?</label>
+                    <div class="col-lg-10">
+                        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Academic Result</button>
+                    </div>
+                </div>
+                <div id="demo" class="collapse">
+                    <div class="form-group">
+                        <label for="inputPassword" class="col-lg-2 control-label">SSC/O levels Result</label>
+                        <div class="col-lg-10">
+                            @Html.TextBoxFor(m => m.S_Result, new { @class = "form-control", @value = "'" + Model.S_Result + "'" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword" class="col-lg-2 control-label">HSC/A levels Result</label>
+                        <div class="col-lg-10">
+                            @Html.TextBoxFor(m => m.C_Result, new { @class = "form-control", @value = "'" + Model.C_Result + "'" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword" class="col-lg-2 control-label">University Result</label>
+                        <div class="col-lg-10">
+                            @Html.TextBoxFor(m => m.V_Result, new { @class = "form-control", @value = "'" + Model.V_Result + "'" })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-2 control-label">Change Password?</label>
+                    <div class="col-lg-10">
+                        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo1">Change Password</button>
+                    </div>
+                </div>
+                <div id="demo1" class="collapse">
+                    <div class="form-group">
+                        <label for="inputPassword" class="col-lg-2 control-label">Old Password</label>
+                        <div class="col-lg-10">
+                            @Html.PasswordFor(m => m.OldPassword, new { @class = "form-control", @value = "" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword" class="col-lg-2 control-label">New Password</label>
+                        <div class="col-lg-10">
+                            @Html.PasswordFor(m => m.NewPassword, new { @class = "form-control", @value = "" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword" class="col-lg-2 control-label">Confirm password</label>
+                        <div class="col-lg-10">
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @value = "" })
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <button type="reset" class="btn btn-default">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Submit</button><br />
+                    </div>
+                </div>
+            </fieldset>
+
+
+
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+}
+

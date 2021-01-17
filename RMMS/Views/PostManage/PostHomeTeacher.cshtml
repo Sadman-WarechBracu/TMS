@@ -1,0 +1,40 @@
+﻿@model List<RMMS.Model.PostManage.PostHomeModel>
+@{
+    ViewBag.Title = "PostHomeTeacher";
+    Layout = "~/Views/Shared/_AfterLayout.cshtml";
+}
+@if (!string.IsNullOrEmpty(ViewBag.Error))
+{
+    <div class="alert alert-dismissible alert-danger">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Oh snap!</strong><br /> @ViewBag.Error
+    </div>
+}
+@if (!string.IsNullOrEmpty(ViewBag.Success))
+{
+    <div class="alert alert-dismissible alert-danger">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+       @ViewBag.Success
+    </div>
+}
+<table class="table table-striped table-hover ">
+    <thead>
+        <tr>
+            <th>User Name</th>
+            <th>PostDetails</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var v in Model)
+        {
+            <tr>
+                <td>@v.UserName</td>
+                <td>@v.Description</td>
+                <td><a href="@Url.Action("SendRequest", "PostManage",new { id = v.P_ID })" class="btn btn-success"><i class="fa fa-check">&nbsp;Apply</i></a></td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
